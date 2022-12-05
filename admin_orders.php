@@ -57,13 +57,13 @@ if(isset($_GET['delete'])){
    <table class="table">
      <thead>
      	<tr>
-     	 <th>user id</th>
-     	 <th>placed on</th>
+     	 <th>user_id</th>
+     	 <th>placed_on</th>
      	 <th>name</th>
      	 <th>email</th>
      	 <th>number</th>
      	 <th>address</th>
-     	 <th>total products</th>
+     	 <th>total_products</th>
      	 <th>total price</th>
      	 <th>payment method</th>
      	 <th>Option</th>
