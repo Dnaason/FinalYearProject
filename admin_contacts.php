@@ -43,8 +43,17 @@ if(isset($_GET['delete'])){
 <section class="messages">
 
    <h1 class="title">messages</h1>
-
-   <div class="box-container">
+   <table class="table">
+     <thead>
+     	<tr>
+     	 <th>user id</th>
+     	 <th>name</th>
+     	 <th>number</th>
+     	 <th>email</th>
+     	 <th>message</th>
+     	 <th>Option</th>
+            </tr>
+         </thead>
 
    <?php
       $select_message = $conn->prepare("SELECT * FROM `message`");
@@ -52,14 +61,15 @@ if(isset($_GET['delete'])){
       if($select_message->rowCount() > 0){
          while($fetch_message = $select_message->fetch(PDO::FETCH_ASSOC)){
    ?>
-   <div class="box">
-      <p> user id : <span><?= $fetch_message['user_id']; ?></span> </p>
-      <p> name : <span><?= $fetch_message['name']; ?></span> </p>
-      <p> number : <span><?= $fetch_message['number']; ?></span> </p>
-      <p> email : <span><?= $fetch_message['email']; ?></span> </p>
-      <p> message : <span><?= $fetch_message['message']; ?></span> </p>
-      <a href="admin_contacts.php?delete=<?= $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">delete</a>
-   </div>
+   <tbody class="box">
+   <tr>
+      <td data-label="user id"><span span><?= $fetch_message['user_id']; ?></span></td>
+      <td data-label="name"><span><?= $fetch_message['name']; ?></span></td>
+      <td data-label="number"><span><?= $fetch_message['number']; ?></span></td>
+      <td data-label="email"><span><?= $fetch_message['email']; ?></span></td>
+      <td data-label="message"><span><?= $fetch_message['message']; ?></span></td>
+      <td data-label="user id"><a href="admin_contacts.php?delete=<?= $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">delete</a></td>
+      </tbody>
    <?php
          }
       }else{
@@ -67,7 +77,7 @@ if(isset($_GET['delete'])){
       }
    ?>
 
-   </div>
+   </table>
 
 </section>
 
