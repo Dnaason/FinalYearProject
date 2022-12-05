@@ -8,7 +8,7 @@
    --light-color:#666;
    --white:#fff;
    --light-bg:#f6f6f6;
-   --border:.2rem solid var(--black);
+   /* --border:.2rem solid var(--black); */
    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
 }
 
@@ -153,6 +153,27 @@ section{
    text-align: center;
    box-shadow: var(--box-shadow);
    text-transform: capitalize;
+}
+
+.table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid var(--green);
+  text-align: center;
+  font-size:16px;
+}
+
+.table th{
+	background-color: var(--green);
+	color:var(--black);
+}
+
+.table tbody tr:nth-child(even){
+	background-color: var(--light-color);
 }
 
 @keyframes fadeIn {
@@ -483,5 +504,33 @@ section{
    .title{
       font-size: 3rem;
    }
+
+   .table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
    
 }

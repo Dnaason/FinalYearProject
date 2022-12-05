@@ -44,14 +44,14 @@ if(isset($_GET['delete'])){
 
    <h1 class="title">user accounts</h1>
 
-   <table>
-         <thead>
-            <tr>
-               <td>user id</td>
-               <td>username</td>
-               <td>email</td>
-               <td>user type</td>
-               <td>Option</td>
+   <table class="table">
+     <thead>
+     	<tr>
+     	 <th>user id</th>
+     	 <th>username</th>
+     	 <th>email</th>
+     	 <th>user type</th>
+     	 <th>Option</th>
             </tr>
          </thead>
 
@@ -62,13 +62,12 @@ if(isset($_GET['delete'])){
       ?>
    
          <tbody style="<?php if($fetch_users['id'] == $admin_id){ echo 'display:none'; }; ?>">
-            <tr>
-               <td><img src="uploaded_img/<?= $fetch_users['image']; ?>" alt=""></td>
-               <td><?= $fetch_users['id']; ?></td>
-               <td><?= $fetch_users['name']; ?></td>
-               <td><?= $fetch_users['email']; ?></td>
-               <td><span style=" color:<?php if($fetch_users['user_type'] == 'admin'){ echo 'orange'; }; ?>"><?= $fetch_users['user_type']; ?></span></td>
-               <td><a href="admin_users.php?delete=<?= $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete</a></td>
+     	      <tr>
+               <td data-label="user id"><?= $fetch_users['id']; ?></td>
+               <td data-label="username"><?= $fetch_users['name']; ?></td>
+               <td data-label="email"><?= $fetch_users['email']; ?></td>
+               <td data-label="user type"><span style=" color:<?php if($fetch_users['user_type'] == 'admin'){ echo 'orange'; }; ?>"><?= $fetch_users['user_type']; ?></span></td>
+               <td data-label="option"><a href="admin_users.php?delete=<?= $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete</a></td>
             </tr>
          </tbody>
      
