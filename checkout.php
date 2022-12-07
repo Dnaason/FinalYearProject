@@ -122,29 +122,29 @@ if(isset($_POST['order'])){
             <select name="method" class="box" required>
                <option value="cash on delivery">cash on delivery</option>
                <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
+               <option value="paytm">MoMo</option>
+               <option value="paypal">Airtel Money</option>
             </select>
          </div>
          <div class="inputBox">
             <span>address line 01 :</span>
-            <input type="text" name="flat" placeholder="e.g. flat number" class="box" required>
+            <input type="text" name="flat" placeholder="e.g. kk102" class="box" required>
          </div>
          <div class="inputBox">
             <span>address line 02 :</span>
-            <input type="text" name="street" placeholder="e.g. street name" class="box" required>
+            <input type="text" name="street" placeholder="e.g. Sonatibe" class="box" required>
          </div>
          <div class="inputBox">
             <span>city :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" required>
+            <input type="text" name="city" placeholder="e.g. Kicukiro" class="box" required>
          </div>
          <div class="inputBox">
             <span>state :</span>
-            <input type="text" name="state" placeholder="e.g. maharashtra" class="box" required>
+            <input type="text" name="state" placeholder="e.g. Kigali" class="box" required>
          </div>
          <div class="inputBox">
             <span>country :</span>
-            <input type="text" name="country" placeholder="e.g. India" class="box" required>
+            <input type="text" name="country" placeholder="e.g. Rwanda" class="box" required>
          </div>
          <div class="inputBox">
             <span>pin code :</span>
