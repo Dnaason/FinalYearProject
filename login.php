@@ -25,6 +25,11 @@ if(isset($_POST['submit'])){
          $_SESSION['admin_id'] = $row['id'];
          header('location:admin_page.php');
 
+      }elseif($row['user_type'] == 'farmer'){
+
+         $_SESSION['farmer_id'] = $row['id'];
+         header('location:farmer_page.php');
+
       }elseif($row['user_type'] == 'user'){
 
          $_SESSION['user_id'] = $row['id'];
