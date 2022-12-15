@@ -6,9 +6,15 @@ session_start();
 
 $user_id = $_SESSION['user_id'];
 
+
 if(!isset($user_id)){
    header('location:login.php');
 };
+
+
+$select_products = $conn->prepare("SELECT * FROM `products` WHERE quantity > 0");
+$select_products->execute();
+
 
 if(isset($_POST['add_to_wishlist'])){
 
@@ -66,10 +72,17 @@ if(isset($_POST['add_to_cart'])){
          $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE name = ? AND user_id = ?");
          $delete_wishlist->execute([$p_name, $user_id]);
       }
-
-      $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
-      $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
+      
+      $select_product = $conn->prepare("SELECT * FROM `products` WHERE id = '$pid'");
+      $select_product->execute();
+      $fetch_prod = $select_product->fetch(PDO::FETCH_ASSOC);
+      if($fetch_prod['quantity'] > $p_qty){
+         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+         $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
+         $message[] = 'added to cart!';
+      }else{
+         $message[] = 'not enough on our stock!';
+      }
    }
 
 }
@@ -109,8 +122,7 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
    <?php
-      $select_products = $conn->prepare("SELECT * FROM `products`");
-      $select_products->execute();
+
       if($select_products->rowCount() > 0){
          while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){ 
    ?>

@@ -33,7 +33,11 @@ if(isset($_POST['order'])){
       while($cart_item = $cart_query->fetch(PDO::FETCH_ASSOC)){
          $cart_products[] = $cart_item['name'].' ( '.$cart_item['quantity'].' )';
          $sub_total = ($cart_item['price'] * $cart_item['quantity']);
+         $quantity = ($cart_item['quantity']);
+         $pid = ($cart_item['pid']);
          $cart_total += $sub_total;
+         $updt = $conn->prepare("UPDATE `products` SET quantity =quantity - '$quantity'  WHERE id ='$pid'");
+         $updt->execute();
       };
    };
 

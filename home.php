@@ -155,13 +155,13 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
    <?php
-      $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
+      $select_products = $conn->prepare("SELECT * FROM `products` WHERE quantity > 0 LIMIT 6");
       $select_products->execute();
       if($select_products->rowCount() > 0){
          while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){ 
    ?>
    <form action="" class="box" method="POST">
-      <div class="price">Rwf<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="price">Rwf <span><?= $fetch_products['price']; ?></span></div>
       <a href="view_page.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
