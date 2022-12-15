@@ -46,7 +46,7 @@ if(!isset($admin_id)){
             $total_pendings += $fetch_pendings['total_price'];
          };
       ?>
-      <h3>Rwf<?= $total_pendings; ?>/-</h3>
+      <h3>Rwf <?= $total_pendings; ?></h3>
       <p>total pendings</p>
       <a href="admin_orders.php" class="btn">see orders</a>
       </div>
@@ -60,7 +60,7 @@ if(!isset($admin_id)){
             $total_completed += $fetch_completed['total_price'];
          };
       ?>
-      <h3>Rwf<?= $total_completed; ?>/-</h3>
+      <h3>Rwf <?= $total_completed; ?></h3>
       <p>completed orders</p>
       <a href="admin_orders.php" class="btn">see orders</a>
       </div>
@@ -101,11 +101,11 @@ if(!isset($admin_id)){
       <div class="box">
       <?php
          $select_admins = $conn->prepare("SELECT * FROM `users` WHERE user_type = ?");
-         $select_admins->execute(['admin']);
+         $select_admins->execute(['farmer']);
          $number_of_admins = $select_admins->rowCount();
       ?>
       <h3><?= $number_of_admins; ?></h3>
-      <p>total admins</p>
+      <p>total Farmer</p>
       <a href="admin_users.php" class="btn">see accounts</a>
       </div>
 

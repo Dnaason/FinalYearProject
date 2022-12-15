@@ -46,7 +46,7 @@ if(!isset($farmer_id)){
             $total_pendings += $fetch_pendings['total_price'];
          };
       ?>
-      <h3>Rwf<?= $total_pendings; ?>/-</h3>
+      <h3>Rwf <?= $total_pendings; ?></h3>
       <p>total pendings</p>
       <a href="farmer_order.php" class="btn">see orders</a>
       </div>
@@ -60,7 +60,7 @@ if(!isset($farmer_id)){
             $total_completed += $fetch_completed['total_price'];
          };
       ?>
-      <h3>Rwf<?= $total_completed; ?>/-</h3>
+      <h3>Rwf <?= $total_completed; ?></h3>
       <p>completed orders</p>
       <a href="farmer_order.php" class="btn">see orders</a>
       </div>

@@ -18,6 +18,8 @@ if(isset($_POST['add_product'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
 
@@ -34,8 +36,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, category, details, price, image) VALUES(?,?,?,?,?)");
-      $insert_products->execute([$name, $category, $details, $price, $image]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(farmer_id, name, category, quantity, details, price, image) VALUES(?,?,?,?,?,?,?)");
+      $insert_products->execute([$farmer_id, $name, $category, $quantity, $details, $price, $image]);
 
       if($insert_products){
          if($image_size > 2000000){
@@ -100,17 +102,16 @@ if(isset($_GET['delete'])){
          <input type="text" name="name" class="box" required placeholder="enter product name">
          <select name="category" class="box" required>
             <option value="" selected disabled>select category</option>
-               <option value="vegitables">vegitables</option>
-               <option value="fruits">fruits</option>
-               <option value="meat">meat</option>
-               <option value="fish">fish</option>
+               <option value="Food Crops">Food Crops</option>
+               <option value="Cash Crops">Cash Crops</option>
          </select>
          </div>
          <div class="inputBox">
          <input type="number" min="0" name="price" class="box" required placeholder="enter product price">
-         <input type="file" name="image" required class="box" accept="image/jpg, image/jpeg, image/png">
+         <input type="number" min="0" name="quantity" class="box" required placeholder="enter product quantity">
          </div>
       </div>
+      <input type="file" name="image" required class="box" accept="image/jpg, image/jpeg, image/png">
       <textarea name="details" class="box" required placeholder="enter product details" cols="30" rows="10"></textarea>
       <input type="submit" class="btn" value="add product" name="add_product">
    </form>
@@ -124,20 +125,23 @@ if(isset($_GET['delete'])){
    <div class="box-container">
 
    <?php
-      $show_products = $conn->prepare("SELECT * FROM `products`");
+      $show_products = $conn->prepare("SELECT * FROM `products` WHERE farmer_id = $farmer_id");
       $show_products->execute();
       if($show_products->rowCount() > 0){
          while($fetch_products = $show_products->fetch(PDO::FETCH_ASSOC)){  
    ?>
    <div class="box">
-      <div class="price">$<?= $fetch_products['price']; ?>/-</div>
+      <div class="flex-btn">
+      <div class="price">Rwf<?= $fetch_products['price']; ?></div>
+      <div class="qty">Qty: <?= $fetch_products['quantity']; ?></div>
+      </div>
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="cat"><?= $fetch_products['category']; ?></div>
       <div class="details"><?= $fetch_products['details']; ?></div>
       <div class="flex-btn">
-         <a href="admin_update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
-         <a href="admin_products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+         <a href="farmer_update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
+         <a href="farmer_product.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
       </div>
    </div>
    <?php

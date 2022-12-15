@@ -8,6 +8,14 @@ if(isset($_POST['submit'])){
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $number = $_POST['number'];
+   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $state = $_POST['state'];
+   $state = filter_var($state, FILTER_SANITIZE_STRING);
+   $district = $_POST['district'];
+   $district = filter_var($district, FILTER_SANITIZE_STRING);
+   $sector = $_POST['sector'];
+   $sector = filter_var($sector, FILTER_SANITIZE_STRING);
    $pass = md5($_POST['pass']);
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
    $cpass = md5($_POST['cpass']);
@@ -28,8 +36,8 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm password not matched!';
       }else{
-         $insert = $conn->prepare("INSERT INTO `users`(name, email, password, image) VALUES(?,?,?,?)");
-         $insert->execute([$name, $email, $pass, $image]);
+         $insert = $conn->prepare("INSERT INTO `users`(name, email, number, state, district, sector, password, image) VALUES(?,?,?,?,?,?,?,?)");
+         $insert->execute([$name, $email, $number, $state, $district, $sector, $pass, $image]);
 
          if($insert){
             if($image_size > 2000000){
@@ -86,6 +94,10 @@ if(isset($message)){
       <h3>register now</h3>
       <input type="text" name="name" class="box" placeholder="enter your name" required>
       <input type="email" name="email" class="box" placeholder="enter your email" required>
+      <input type="number" name="number" class="box" placeholder="enter your number" required>
+      <input type="text" name="state" class="box" placeholder="enter your state" required>
+      <input type="text" name="district" class="box" placeholder="enter your district" required>
+      <input type="text" name="sector" class="box" placeholder="enter your sector" required>
       <input type="password" name="pass" class="box" placeholder="enter your password" required>
       <input type="password" name="cpass" class="box" placeholder="confirm your password" required>
       <input type="file" name="image" class="box" required accept="image/jpg, image/jpeg, image/png">

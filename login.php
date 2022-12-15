@@ -5,7 +5,7 @@
 session_start();
 
 if(isset($_POST['submit'])){
-
+   
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $pass = md5($_POST['pass']);
