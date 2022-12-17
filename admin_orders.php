@@ -99,7 +99,7 @@ if(isset($_GET['delete'])){
                <input type="submit" name="update_order" class="option-btn" value="udate">
                <a href="admin_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
             </div>
-         </form>
+         </form>KWAWE
            </td>
      	  </tr>
      </tbody>

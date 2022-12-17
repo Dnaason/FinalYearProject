@@ -70,8 +70,6 @@ if(isset($_GET['delete'])){
                <td data-label="option"><a href="admin_users.php?delete=<?= $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete</a></td>
             </tr>
          </tbody>
-     
-      
       <?php
       }
       ?>
