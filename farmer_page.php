@@ -40,10 +40,10 @@ if(!isset($farmer_id)){
       <div class="box">
       <?php
          $total_pendings = 0;
-         $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-         $select_pendings->execute(['pending']);
+         $select_pendings = $conn->prepare("SELECT sum(price) as sum FROM `order_products` WHERE status = ? AND farmer_id= ?");
+         $select_pendings->execute(['pending',$farmer_id]);
          while($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)){
-            $total_pendings += $fetch_pendings['total_price'];
+            $total_pendings += $fetch_pendings['sum'];
          };
       ?>
       <h3>Rwf <?= $total_pendings; ?></h3>
@@ -54,10 +54,10 @@ if(!isset($farmer_id)){
       <div class="box">
       <?php
          $total_completed = 0;
-         $select_completed = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-         $select_completed->execute(['completed']);
+         $select_completed = $conn->prepare("SELECT sum(price) as sum FROM `order_products` WHERE status = ? AND farmer_id= ?");
+         $select_completed->execute(['completed',$farmer_id]);
          while($fetch_completed = $select_completed->fetch(PDO::FETCH_ASSOC)){
-            $total_completed += $fetch_completed['total_price'];
+            $total_completed += $fetch_completed['sum'];
          };
       ?>
       <h3>Rwf <?= $total_completed; ?></h3>
@@ -67,8 +67,8 @@ if(!isset($farmer_id)){
 
       <div class="box">
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders`");
-         $select_orders->execute();
+         $select_orders = $conn->prepare("SELECT DISTINCT order_id FROM `order_products` WHERE farmer_id= ?");
+         $select_orders->execute([$farmer_id]);
          $number_of_orders = $select_orders->rowCount();
       ?>
       <h3><?= $number_of_orders; ?></h3>

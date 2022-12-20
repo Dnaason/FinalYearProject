@@ -29,12 +29,14 @@ if(isset($_POST['order'])){
 
    $cart_query = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $cart_query->execute([$user_id]);
+   $products_array=[];
    if($cart_query->rowCount() > 0){
       while($cart_item = $cart_query->fetch(PDO::FETCH_ASSOC)){
          $cart_products[] = $cart_item['name'].' ( '.$cart_item['quantity'].' )';
          $sub_total = ($cart_item['price'] * $cart_item['quantity']);
          $quantity = ($cart_item['quantity']);
          $pid = ($cart_item['pid']);
+         array_push($products_array,['pid'=>$pid,'tot'=>$sub_total]);
          $cart_total += $sub_total;
          $updt = $conn->prepare("UPDATE `products` SET quantity =quantity - '$quantity'  WHERE id ='$pid'");
          $updt->execute();
@@ -53,8 +55,28 @@ if(isset($_POST['order'])){
    }else{
       $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, placed_on) VALUES(?,?,?,?,?,?,?,?,?)");
       $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $cart_total, $placed_on]);
+      $orderId = $conn->lastInsertId();
+      foreach($products_array as $orderInfo){
+         $product_query = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
+         $product_query->execute([$orderInfo['pid']]);
+         $farmer_id=0;
+         while($productData = $product_query->fetch(PDO::FETCH_ASSOC)){
+            $farmer_id=$productData['farmer_id'];
+         }
+
+         // ###############3
+
+         $create_order = $conn->prepare("INSERT INTO `order_products`(price,pid,order_id,farmer_id) VALUES(?,?,?,?)");
+         $create_order->execute([$orderInfo['tot'],$orderInfo['pid'],$orderId,$farmer_id]);
+
+
+         // ################33
+
+
+      }
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
+      
       $message[] = 'order placed successfully!';
    }
 
