@@ -5,6 +5,7 @@
 session_start();
 
 $user_id = $_SESSION['user_id'];
+$orderId=0;
 
 if (!isset($user_id)) {
    header('location:login.php');
@@ -64,32 +65,32 @@ if (isset($_POST['order'])) {
             $farmer_id = $productData['farmer_id'];
 
 
-            $sms_query = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $sms_query->execute([$farmer_id]);
-            if($sms_query ->rowCount() > 0){
-               $sms_details = $sms_query->fetch(PDO::FETCH_ASSOC);
+         //    $sms_query = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
+         //    $sms_query->execute([$farmer_id]);
+         //    if($sms_query ->rowCount() > 0){
+         //       $sms_details = $sms_query->fetch(PDO::FETCH_ASSOC);
             
-            $curl = curl_init();
+         //    $curl = curl_init();
 
-         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.mista.io/sms',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('to' => '+25'.$sms_details['number'],'from' => 'web fa','unicode' => '0','sms' => 'Hello '.$sms_details['name'],'action' => 'send-sms'),
-            CURLOPT_HTTPHEADER => array(
-               'x-api-key: 188|aUKgh0mLT4qzUqV5HHnAB8DK9CJlR4gG02HOyusr'
-            ),
-            ));
+         // curl_setopt_array($curl, array(
+         //    CURLOPT_URL => 'https://api.mista.io/sms',
+         //    CURLOPT_RETURNTRANSFER => true,
+         //    CURLOPT_ENCODING => '',
+         //    CURLOPT_MAXREDIRS => 10,
+         //    CURLOPT_TIMEOUT => 0,
+         //    CURLOPT_FOLLOWLOCATION => true,
+         //    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+         //    CURLOPT_CUSTOMREQUEST => 'POST',
+         //    CURLOPT_POSTFIELDS => array('to' => '+25'.$sms_details['number'],'from' => 'web fa','unicode' => '0','sms' => 'Hello '.$sms_details['name'].' WebFA has received your mony on '.date('d-M-Y-H:m').' Money received: '.$productData['price'],'action' => 'send-sms'),
+         //    CURLOPT_HTTPHEADER => array(
+         //       'x-api-key: 188|aUKgh0mLT4qzUqV5HHnAB8DK9CJlR4gG02HOyusr'
+         //    ),
+         //    ));
 
-            $response = curl_exec($curl);
+         //    $response = curl_exec($curl);
 
-         curl_close($curl);
-         }
+         // curl_close($curl);
+         // }
       }
 
          // ###############3
@@ -104,6 +105,41 @@ if (isset($_POST['order'])) {
       }
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
+
+
+
+      // SELECT *,sum(price) FROM `order_products` join users ON order_products.farmer_id=users.id WHERE order_id=28 GROUP BY farmer_id;
+
+
+      $sms_query = $conn->prepare("SELECT *,sum(price) as sum FROM `order_products` join users ON order_products.farmer_id=users.id WHERE order_id=? GROUP BY farmer_id");
+      $sms_query->execute([$orderId]);
+
+      while($sms_details = $sms_query->fetch(PDO::FETCH_ASSOC)){
+         $curl = curl_init();
+         curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.mista.io/sms',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('to' => '+25'.$sms_details['number'],'from' => 'web fa','unicode' => '0','sms' => 'Hello '.$sms_details['name'].' WebFA has received your money on '.date('d-M-Y-H:m').' Money received: '.$sms_details['sum'],'action' => 'send-sms'),
+            CURLOPT_HTTPHEADER => array(
+               'x-api-key: 188|aUKgh0mLT4qzUqV5HHnAB8DK9CJlR4gG02HOyusr'
+            ),
+            ));
+
+            $response = curl_exec($curl);
+
+         curl_close($curl);
+      }
+            
+               
+            
+            
+         
 
       $message[] = 'order placed successfully!';
    }
