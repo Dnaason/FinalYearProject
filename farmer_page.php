@@ -78,8 +78,8 @@ if(!isset($farmer_id)){
 
       <div class="box">
       <?php
-         $select_products = $conn->prepare("SELECT * FROM `products`");
-         $select_products->execute();
+         $select_products = $conn->prepare("SELECT * FROM `products` WHERE farmer_id= ?");
+         $select_products->execute([$farmer_id]);
          $number_of_products = $select_products->rowCount();
       ?>
       <h3><?= $number_of_products; ?></h3>

@@ -2,7 +2,7 @@
    <html lang="en" dir="ltr">
       <head>
          <meta charset="utf-8">
-         <title>Liaison</title>
+         <title>WebFA</title>
          <link rel="stylesheet" href="./css/loading.css">
       </head>
       <body>
