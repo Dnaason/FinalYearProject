@@ -107,7 +107,7 @@ if(isset($_GET['delete'])){
       <?php
          }
       }else{
-         echo '<p class="empty">no orders placed yet!</p>';
+         echo '<p class="empty">no pending orders yet!</p>';
       }
       ?>
    </table>
