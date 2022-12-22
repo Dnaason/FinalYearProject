@@ -70,7 +70,7 @@ if(isset($_GET['delete'])){
      	</tr>
      </thead>
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders`");
+         $select_orders = $conn->prepare("SELECT * FROM `orders` ORDER BY `placed_on` DESC");
          $select_orders->execute();
          if($select_orders->rowCount() > 0){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
@@ -99,7 +99,7 @@ if(isset($_GET['delete'])){
                <input type="submit" name="update_order" class="option-btn" value="udate">
                <a href="admin_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
             </div>
-         </form>KWAWE
+         </form>
            </td>
      	  </tr>
      </tbody>

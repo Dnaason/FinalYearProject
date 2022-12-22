@@ -16,9 +16,17 @@ if(isset($_POST['update_profile'])){
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $number = $_POST['number'];
+   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $state = $_POST['state'];
+   $state = filter_var($state, FILTER_SANITIZE_STRING);
+   $district = $_POST['district'];
+   $district = filter_var($district, FILTER_SANITIZE_STRING);
+   $sector = $_POST['sector'];
+   $sector = filter_var($sector, FILTER_SANITIZE_STRING);
 
-   $update_profile = $conn->prepare("UPDATE `users` SET name = ?, email = ? WHERE id = ?");
-   $update_profile->execute([$name, $email, $farmer_id]);
+   $update_profile = $conn->prepare("UPDATE `users` SET name = ?, email = ?, number = ?, state = ?, district = ?, sector = ? WHERE id = ?");
+   $update_profile->execute([$name, $email, $number, $state, $district, $sector, $farmer_id]);
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
@@ -91,16 +99,21 @@ if(isset($_POST['update_profile'])){
    <form action="" method="POST" enctype="multipart/form-data">
       <img src="uploaded_img/<?= $fetch_profile['image']; ?>" alt="">
       <div class="flex">
-         <div class="inputBox">
+      <div class="inputBox">
             <span>username :</span>
             <input type="text" name="name" value="<?= $fetch_profile['name']; ?>" placeholder="update username" required class="box">
             <span>email :</span>
             <input type="email" name="email" value="<?= $fetch_profile['email']; ?>" placeholder="update email" required class="box">
-            <span>update pic :</span>
-            <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box">
-            <input type="hidden" name="old_image" value="<?= $fetch_profile['image']; ?>">
+            <span>Number :</span>
+            <input type="text" name="number" value="<?= $fetch_profile['number']; ?>" placeholder="update username" required class="box">
+            <span>state :</span>
+            <input type="text" name="state" value="<?= $fetch_profile['state']; ?>" placeholder="update email" required class="box">
+            <span>district :</span>
+            <input type="text" name="district" value="<?= $fetch_profile['district']; ?>" placeholder="update email" required class="box">
          </div>
          <div class="inputBox">
+            <span>sector :</span>
+            <input type="text" name="sector" value="<?= $fetch_profile['sector']; ?>" placeholder="update email" required class="box">
             <input type="hidden" name="old_pass" value="<?= $fetch_profile['password']; ?>">
             <span>old password :</span>
             <input type="password" name="update_pass" placeholder="enter previous password" class="box">
@@ -108,6 +121,9 @@ if(isset($_POST['update_profile'])){
             <input type="password" name="new_pass" placeholder="enter new password" class="box">
             <span>confirm password :</span>
             <input type="password" name="confirm_pass" placeholder="confirm new password" class="box">
+            <span>update pic :</span>
+            <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box">
+            <input type="hidden" name="old_image" value="<?= $fetch_profile['image']; ?>">
          </div>
       </div>
       <div class="flex-btn">

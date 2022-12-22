@@ -50,6 +50,10 @@ if(isset($_GET['delete'])){
      	 <th>user id</th>
      	 <th>username</th>
      	 <th>email</th>
+     	 <th>number</th>
+     	 <th>state</th>
+     	 <th>district</th>
+     	 <th>sector</th>
      	 <th>user type</th>
      	 <th>Option</th>
             </tr>
@@ -66,6 +70,10 @@ if(isset($_GET['delete'])){
                <td data-label="user id"><?= $fetch_users['id']; ?></td>
                <td data-label="username"><?= $fetch_users['name']; ?></td>
                <td data-label="email"><?= $fetch_users['email']; ?></td>
+               <td data-label="number"><?= $fetch_users['number']; ?></td>
+               <td data-label="state"><?= $fetch_users['state']; ?></td>
+               <td data-label="district"><?= $fetch_users['district']; ?></td>
+               <td data-label="sector"><?= $fetch_users['sector']; ?></td>
                <td data-label="user type"><span style=" color:<?php if($fetch_users['user_type'] == 'admin'){ echo 'orange'; }; ?>"><?= $fetch_users['user_type']; ?></span></td>
                <td data-label="option"><a href="admin_users.php?delete=<?= $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete</a></td>
             </tr>

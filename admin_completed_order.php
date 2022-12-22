@@ -4,9 +4,9 @@
 
 session_start();
 
-$farmer_id = $_SESSION['farmer_id'];
+$admin_id = $_SESSION['admin_id'];
 
-if(!isset($farmer_id)){
+if(!isset($admin_id)){
    header('location:login.php');
 };
 
@@ -26,7 +26,7 @@ if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
    $delete_orders = $conn->prepare("DELETE FROM `orders` WHERE id = ?");
    $delete_orders->execute([$delete_id]);
-   header('location:farmer_order.php');
+   header('location:admin_orders.php');
 
 }
 
@@ -49,7 +49,7 @@ if(isset($_GET['delete'])){
 </head>
 <body>
    
-<?php include 'farmer_header.php'; ?>
+<?php include 'admin_header.php'; ?>
 
 <section class="placed-orders">
 
@@ -70,34 +70,34 @@ if(isset($_GET['delete'])){
      	</tr>
      </thead>
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders`");
-         $select_orders->execute();
-         if($select_orders->rowCount() > 0){
-            while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
+         $select_completed = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ? ORDER BY `placed_on` DESC");
+         $select_completed->execute(['completed']);
+         if($select_completed->rowCount() > 0){
+            while($fetch_completed = $select_completed->fetch(PDO::FETCH_ASSOC)){
       ?>
       
       <tbody>
      	  <tr>
-     	  	  <td data-label="user id"><span><?= $fetch_orders['user_id']; ?></span> </td>
-     	  	  <td data-label="placed on"><span><?= $fetch_orders['placed_on']; ?></span></td>
-     	  	  <td data-label="name"><span><?= $fetch_orders['name']; ?></span></td>
-     	  	  <td data-label="email"><span><?= $fetch_orders['email']; ?></span></td>
-     	  	  <td data-label="number"><span><?= $fetch_orders['number']; ?></span></td>
-     	  	  <td data-label="address"><span><?= $fetch_orders['address']; ?></span></td>
-     	  	  <td data-label="total products"><span><?= $fetch_orders['total_products']; ?></span></td>
-     	  	  <td data-label="total price"><span>Rfw<?= $fetch_orders['total_price']; ?>/-</span></td>
-     	  	  <td data-label="payment method"><span><?= $fetch_orders['method']; ?></span></td>
+     	  	  <td data-label="user id"><span><?= $fetch_completed['user_id']; ?></span> </td>
+     	  	  <td data-label="placed on"><span><?= $fetch_completed['placed_on']; ?></span></td>
+     	  	  <td data-label="name"><span><?= $fetch_completed['name']; ?></span></td>
+     	  	  <td data-label="email"><span><?= $fetch_completed['email']; ?></span></td>
+     	  	  <td data-label="number"><span><?= $fetch_completed['number']; ?></span></td>
+     	  	  <td data-label="address"><span><?= $fetch_completed['address']; ?></span></td>
+     	  	  <td data-label="total products"><span><?= $fetch_completed['total_products']; ?></span></td>
+     	  	  <td data-label="total price"><span>Rfw<?= $fetch_completed['total_price']; ?>/-</span></td>
+     	  	  <td data-label="payment method"><span><?= $fetch_completed['method']; ?></span></td>
      	  	  <td data-label="Option" class="box">
                <form action="" method="POST">
-            <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
+            <input type="hidden" name="order_id" value="<?= $fetch_completed['id']; ?>">
             <select name="update_payment" class="drop-down">
-               <option value="" selected disabled><?= $fetch_orders['payment_status']; ?></option>
+               <option value="" selected disabled><?= $fetch_completed['payment_status']; ?></option>
                <option value="pending">pending</option>
                <option value="completed">completed</option>
             </select>
             <div class="flex-btn">
                <input type="submit" name="update_order" class="option-btn" value="udate">
-               <a href="farmer_order.php" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+               <a href="admin_orders.php" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
             </div>
          </form>
            </td>

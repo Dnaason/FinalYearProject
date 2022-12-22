@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2022 at 03:56 PM
+-- Generation Time: Dec 22, 2022 at 03:14 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -103,13 +103,20 @@ INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `add
 (27, 36, 'Sweet Potatoes', '12122', 'hono@gmail.com', 'cash on delivery', 'flat no. kk132 niboye kicukiro Kigali Rwanda - 1222', ', Beans ( 11 ), Sweet Potatoes ( 1 )', 11300, '20-Dec-2022', 'completed'),
 (28, 36, 'mugisha', '122222', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 niboye kicukiro Kigali Rwanda - 1234', ', Beans ( 1 ), rice ( 1 ), Casava plants ( 1 )', 2700, '20-Dec-2022', 'completed'),
 (29, 36, 'mugisha', '12334443', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 niboye kicukiro Kigali Rwanda - 122', ', Beans ( 1 ), Sweet Potatoes ( 1 ), rice ( 1 ), Casava plants ( 1 ), maize ( 1 )', 3300, '20-Dec-2022', 'completed'),
-(30, 36, 'Gisubizo', '078763762', 'gi@gmail.com', 'paytm', 'flat no. kk012 Cyuve Musanze South Rwanda - 123', ', maize ( 1 )', 300, '21-Dec-2022', 'pending'),
-(31, 36, 'Gisubizo', '7', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 Cyuve Musanze South Rwanda - 89', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'pending'),
-(32, 36, 'mugisha', '1231', 'mugisha@gmail.com', 'cash on delivery', 'flat no. kk132 gatenga kicukiro South Rwanda - 123', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'pending'),
-(33, 36, 'blue', '324', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 Cyuve kicukiro Kigali Rwanda - 234', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'pending'),
-(34, 36, 'mugisha', '87654', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 niboye Musanze Kigali Rwanda - 87654', ', Sweet Potatoes ( 1 )', 300, '21-Dec-2022', 'pending'),
+(30, 36, 'Gisubizo', '078763762', 'gi@gmail.com', 'paytm', 'flat no. kk012 Cyuve Musanze South Rwanda - 123', ', maize ( 1 )', 300, '21-Dec-2022', 'completed'),
+(31, 36, 'Gisubizo', '7', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 Cyuve Musanze South Rwanda - 89', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'completed'),
+(32, 36, 'mugisha', '1231', 'mugisha@gmail.com', 'cash on delivery', 'flat no. kk132 gatenga kicukiro South Rwanda - 123', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'completed'),
+(33, 36, 'blue', '324', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 Cyuve kicukiro Kigali Rwanda - 234', ', Casava plants ( 1 )', 400, '21-Dec-2022', 'completed'),
+(34, 36, 'mugisha', '87654', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 niboye Musanze Kigali Rwanda - 87654', ', Sweet Potatoes ( 1 )', 300, '21-Dec-2022', 'completed'),
 (35, 36, 'hono', '987654', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 Cyuve kicukiro South Rwanda - 987654', ', Beans ( 1 ), Sweet Potatoes ( 1 ), rice ( 1 ), Casava plants ( 1 ), maize ( 1 )', 3300, '21-Dec-2022', 'pending'),
-(36, 36, 'mugisha', '23443', 'mugisha@gmail.com', 'cash on delivery', 'flat no. kk132 gatenga Musanze South Rwanda - 2342222', ', Sweet Potatoes ( 1 )', 300, '21-Dec-2022', 'pending');
+(36, 36, 'mugisha', '23443', 'mugisha@gmail.com', 'cash on delivery', 'flat no. kk132 gatenga Musanze South Rwanda - 2342222', ', Sweet Potatoes ( 1 )', 300, '21-Dec-2022', 'completed'),
+(37, 36, 'Gisubizo', '21', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 Cyuve Musanze South Rwanda - 233', ', maize ( 2 )', 600, '21-Dec-2022', 'pending'),
+(38, 36, 'mugisha', '8765', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 gatenga Musanze South Rwanda - 4567', ', Casava plants ( 6 )', 2400, '21-Dec-2022', 'pending'),
+(39, 36, 'Gisubizo', '98765', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 Cyuve Musanze South Rwanda - 4556', ', Casava plants ( 3 )', 1200, '21-Dec-2022', 'pending'),
+(40, 36, 'Gisubizo', '54345', 'gi@gmail.com', 'cash on delivery', 'flat no. kk132 Cyuve Musanze South Rwanda - 876', ', maize ( 2 )', 600, '21-Dec-2022', 'pending'),
+(41, 36, 'mugisha', '12222222', 'hono@gmail.com', 'cash on delivery', 'flat no. kk012 niboye Musanze Kigali Rwanda - 22222', ', Beans ( 1 ), Sweet Potatoes ( 1 ), rice ( 1 ), maize ( 1 ), Casava plants ( 1 )', 3300, '21-Dec-2022', 'pending'),
+(42, 36, 'Gisubizo', '352532', 'gi@gmail.com', 'cash on delivery', 'flat no. h2837 Cyuve Musanze South Rwanda - 32', ', Casava flowers ( 10 ), maize ( 2 )', 7600, '21-Dec-2022', 'pending'),
+(43, 36, 'Gisubizo', '8765', 'gi@gmail.com', 'cash on delivery', 'flat no. h2837 Cyuve Musanze South Rwanda - 687', ', Casava flowers ( 5 ), maize ( 3 )', 4400, '21-Dec-2022', 'pending');
 
 --
 -- Triggers `orders`
@@ -147,16 +154,29 @@ INSERT INTO `order_products` (`opid`, `order_id`, `pid`, `price`, `farmer_id`, `
 (7, 29, 33, 1300, 34, 'completed'),
 (8, 29, 34, 400, 35, 'completed'),
 (9, 29, 35, 300, 35, 'completed'),
-(10, 30, 35, 300, 35, 'pending'),
-(11, 31, 34, 400, 35, 'pending'),
-(12, 33, 34, 400, 35, 'pending'),
-(13, 34, 32, 300, 35, 'pending'),
+(10, 30, 35, 300, 35, 'completed'),
+(11, 31, 34, 400, 35, 'completed'),
+(12, 33, 34, 400, 35, 'completed'),
+(13, 34, 32, 300, 35, 'completed'),
 (14, 35, 31, 1000, 35, 'pending'),
 (15, 35, 32, 300, 35, 'pending'),
 (16, 35, 33, 1300, 34, 'pending'),
 (17, 35, 34, 400, 35, 'pending'),
 (18, 35, 35, 300, 35, 'pending'),
-(19, 36, 32, 300, 35, 'pending');
+(19, 36, 32, 300, 35, 'completed'),
+(20, 37, 35, 600, 35, 'pending'),
+(21, 38, 34, 2400, 35, 'pending'),
+(22, 39, 34, 1200, 35, 'pending'),
+(23, 40, 35, 600, 35, 'pending'),
+(24, 41, 31, 1000, 35, 'pending'),
+(25, 41, 32, 300, 35, 'pending'),
+(26, 41, 33, 1300, 34, 'pending'),
+(27, 41, 35, 300, 35, 'pending'),
+(28, 41, 34, 400, 35, 'pending'),
+(29, 42, 36, 7000, 37, 'pending'),
+(30, 42, 35, 600, 35, 'pending'),
+(31, 43, 36, 3500, 37, 'pending'),
+(32, 43, 35, 900, 35, 'pending');
 
 -- --------------------------------------------------------
 
@@ -180,11 +200,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `farmer_id`, `name`, `category`, `quantity`, `details`, `price`, `image`) VALUES
-(31, '35', 'Beans', 'Food Crops', '106', 'fresh beans', 1000, 'pngegg (8).png'),
-(32, '35', 'Sweet Potatoes', 'Food Crops', '403', 'Sweet Potatoes', 300, 'pngegg (16).png'),
-(33, '34', 'rice', 'Cash Crops', '209', 'rice ', 1300, 'pngegg (5).png'),
-(34, '35', 'Casava plants', 'Cash Crops', '12', 'casava plant', 400, 'pngegg (14).png'),
-(35, '35', 'maize', 'Food Crops', '96', 'maize', 300, 'pngegg (6).png');
+(31, '38', 'Beans', 'Food Crops', '105', 'fresh beans', 1000, 'pngegg (8).png'),
+(32, '35', 'Sweet Potatoes', 'Food Crops', '402', 'Sweet Potatoes', 300, 'pngegg (16).png'),
+(33, '38', 'rice', 'Cash Crops', '208', 'rice ', 1300, 'pngegg (5).png'),
+(34, '35', 'Casava plants', 'Cash Crops', '29', 'casava plant', 400, 'pngegg (14).png'),
+(35, '35', 'maize', 'Food Crops', '86', 'maize', 300, 'pngegg (6).png'),
+(36, '37', 'Casava flowers', 'Cash Crops', '63', 'quality', 700, 'pngegg (4).png'),
+(37, '37', 'Soya', 'Food Crops', '23', 'quality', 1200, 'pngegg (9).png'),
+(38, '37', 'Bens', 'Food Crops', '53', 'high on quality', 500, 'pngegg (12).png');
 
 -- --------------------------------------------------------
 
@@ -210,12 +233,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `number`, `state`, `district`, `sector`, `password`, `user_type`, `image`) VALUES
-(32, 'naason', 'naason@gmail.com', '', '', NULL, NULL, 'ed735d55415bee976b771989be8f7005', 'admin', 'cabbage.png'),
-(33, 'Muhire', 'muhire@gmail.com', '', '', NULL, NULL, 'e9ca8852f856464e40f1065117e44991', 'user', 'pic-4.png'),
-(34, 'Mukunzi', 'yannick@gmail.com', '', '', NULL, NULL, '911f6332e7f90b94b87f15377263995c', 'user', 'orange.png'),
-(35, 'hono', 'hono@gmail.com', '0783827435', '', 'Gisagara', 'Ndora', 'cf22a160789a91dd5f737cd3b2640cc2', 'farmer', 'orange.png'),
-(36, 'mugisha', 'mugisha@gmail.com', '0786910057', 'Kigali', 'Nyarugenge', 'Muhima', '89aa4b196b48c8a13a6549bb1eaebd80', 'user', 'strawberry.png'),
-(37, 'hodal', 'hodal@gmail.com', '0786910057', 'South', 'Huye', 'Muhima', 'b5d9b59113086d3f9f9f108adaaa9ab5', 'farmer', 'broccoli.png');
+(32, 'naason', 'naason@gmail.com', '0783827435', 'West', 'Nyabihu', 'Shyira', 'ed735d55415bee976b771989be8f7005', 'admin', 'cabbage.png'),
+(33, 'Muhire', 'muhire@gmail.com', '0786910057', 'Kigali', 'Gasabo', 'Kacyiru', 'e9ca8852f856464e40f1065117e44991', 'user', 'pic-4.png'),
+(34, 'Mukunzi', 'yannick@gmail.com', '0731658540', 'Kigali', 'Nyarugenge', 'Muhima', '911f6332e7f90b94b87f15377263995c', 'user', 'orange.png'),
+(35, 'Hnorine', 'hono@gmail.com', '0787611242', 'East', 'Gisagara', 'Ndora', 'cf22a160789a91dd5f737cd3b2640cc2', 'farmer', 'orange.png'),
+(36, 'mugisha', 'mugish@gmail.com', '0731658540', 'Kigali', 'Nyarugenge', 'Muhima', '89aa4b196b48c8a13a6549bb1eaebd80', 'user', 'strawberry.png'),
+(37, 'Naason', 'na@gmail.com', '0731658540', 'South', 'Huye', 'Muhima', 'b5d9b59113086d3f9f9f108adaaa9ab5', 'farmer', 'broccoli.png'),
+(38, 'Muhizi', 'muhizi@gmail.com', '0787611242', 'East', 'Bugesera', 'Ntarama', '967c0823cad1084501db462dca54ac1b', 'farmer', 'cauliflower.png');
 
 -- --------------------------------------------------------
 
@@ -286,7 +310,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -298,25 +322,25 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `opid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `opid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

@@ -48,7 +48,7 @@ if(!isset($admin_id)){
       ?>
       <h3>Rwf <?= $total_pendings; ?></h3>
       <p>total pendings</p>
-      <a href="admin_orders.php" class="btn">see orders</a>
+      <a href="admin_pending_order.php" class="btn">see orders</a>
       </div>
 
       <div class="box">
@@ -62,7 +62,7 @@ if(!isset($admin_id)){
       ?>
       <h3>Rwf <?= $total_completed; ?></h3>
       <p>completed orders</p>
-      <a href="admin_orders.php" class="btn">see orders</a>
+      <a href="admin_completed_order.php" class="btn">see orders</a>
       </div>
 
       <div class="box">

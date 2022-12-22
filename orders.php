@@ -50,7 +50,7 @@ if(!isset($user_id)){
       </thead>
 
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE user_id = ?");
+         $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE user_id = ? ORDER BY `placed_on` DESC");
          $select_orders->execute([$user_id]);
          if($select_orders->rowCount() > 0){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){ 

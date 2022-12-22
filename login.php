@@ -6,14 +6,14 @@ session_start();
 
 if(isset($_POST['submit'])){
    
-   $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $number = $_POST['number'];
+   $number = filter_var($number, FILTER_SANITIZE_STRING);
    $pass = md5($_POST['pass']);
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
-   $sql = "SELECT * FROM `users` WHERE email = ? AND password = ?";
+   $sql = "SELECT * FROM `users` WHERE number = ? AND password = ?";
    $stmt = $conn->prepare($sql);
-   $stmt->execute([$email, $pass]);
+   $stmt->execute([$number, $pass]);
    $rowCount = $stmt->rowCount();  
 
    $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
       }
 
    }else{
-      $message[] = 'incorrect email or password!';
+      $message[] = 'incorrect number or password!';
    }
 
 }
@@ -83,7 +83,7 @@ if(isset($message)){
 
    <form action="" method="POST">
       <h3>login now</h3>
-      <input type="email" name="email" class="box" placeholder="enter your email" required>
+      <input type="text" name="number" class="box" placeholder="enter your number" required>
       <input type="password" name="pass" class="box" placeholder="enter your password" required>
       <input type="submit" value="login now" class="btn" name="submit">
       <p>don't have an account? <a href="register.php">register now</a></p>

@@ -21,7 +21,6 @@ if(isset($message)){
 
       <nav class="navbar">
          <a href="admin_page.php">home</a>
-         <a href="admin_products.php">products</a>
          <a href="admin_orders.php">orders</a>
          <a href="admin_users.php">users</a>
          <a href="admin_contacts.php">messages</a>
@@ -43,8 +42,7 @@ if(isset($message)){
          <a href="admin_update_profile.php" class="btn">update profile</a>
          <a href="logout.php" class="delete-btn">logout</a>
          <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="admin_register.php" class="option-btn">register</a>
+            <a href="admin_register.php" class="option-btn">Register Farmer</a>
          </div>
       </div>
 
