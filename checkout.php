@@ -65,32 +65,6 @@ if (isset($_POST['order'])) {
             $farmer_id = $productData['farmer_id'];
 
 
-         //    $sms_query = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-         //    $sms_query->execute([$farmer_id]);
-         //    if($sms_query ->rowCount() > 0){
-         //       $sms_details = $sms_query->fetch(PDO::FETCH_ASSOC);
-            
-         //    $curl = curl_init();
-
-         // curl_setopt_array($curl, array(
-         //    CURLOPT_URL => 'https://api.mista.io/sms',
-         //    CURLOPT_RETURNTRANSFER => true,
-         //    CURLOPT_ENCODING => '',
-         //    CURLOPT_MAXREDIRS => 10,
-         //    CURLOPT_TIMEOUT => 0,
-         //    CURLOPT_FOLLOWLOCATION => true,
-         //    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-         //    CURLOPT_CUSTOMREQUEST => 'POST',
-         //    CURLOPT_POSTFIELDS => array('to' => '+25'.$sms_details['number'],'from' => 'web fa','unicode' => '0','sms' => 'Hello '.$sms_details['name'].' WebFA has received your mony on '.date('d-M-Y-H:m').' Money received: '.$productData['price'],'action' => 'send-sms'),
-         //    CURLOPT_HTTPHEADER => array(
-         //       'x-api-key: 188|aUKgh0mLT4qzUqV5HHnAB8DK9CJlR4gG02HOyusr'
-         //    ),
-         //    ));
-
-         //    $response = curl_exec($curl);
-
-         // curl_close($curl);
-         // }
       }
 
          // ###############3
@@ -198,15 +172,15 @@ if (isset($_POST['order'])) {
          <div class="flex">
             <div class="inputBox">
                <span>your name :</span>
-               <input type="text" name="name" placeholder="enter your name" class="box" required>
+               <input type="text" name="name" value="<?= $fetch_profile['name']; ?>" class="box" required>
             </div>
             <div class="inputBox">
                <span>your number :</span>
-               <input type="number" name="number" placeholder="enter your number" class="box" required>
+               <input type="text" name="number" value="<?= $fetch_profile['number']; ?>" class="box" required>
             </div>
             <div class="inputBox">
                <span>your email :</span>
-               <input type="email" name="email" placeholder="enter your email" class="box" required>
+               <input type="email" name="email" value="<?= $fetch_profile['email']; ?>" class="box" required>
             </div>
             <div class="inputBox">
                <span>payment method :</span>
@@ -217,29 +191,30 @@ if (isset($_POST['order'])) {
                   <option value="paypal">Airtel Money</option>
                </select>
             </div>
-            <div class="inputBox">
-               <span>address line 01 :</span>
-               <input type="text" name="flat" placeholder="e.g. kk102" class="box" required>
-            </div>
-            <div class="inputBox">
-               <span>address line 02 :</span>
-               <input type="text" name="street" placeholder="e.g. Sonatibe" class="box" required>
-            </div>
+            
             <div class="inputBox">
                <span>city :</span>
-               <input type="text" name="city" placeholder="e.g. Kicukiro" class="box" required>
+               <input type="text" name="city" value="<?= $fetch_profile['district']; ?>" class="box" required>
             </div>
             <div class="inputBox">
                <span>state :</span>
-               <input type="text" name="state" placeholder="e.g. Kigali" class="box" required>
+               <input type="text" name="state" value="<?= $fetch_profile['state']; ?>" class="box" required>
             </div>
             <div class="inputBox">
                <span>country :</span>
-               <input type="text" name="country" placeholder="e.g. Rwanda" class="box" required>
+               <input type="text" name="country" value="Rwanda" class="box" required>
+            </div>
+            <div class="inputBox">
+               <span>address line 01 :</span>
+               <input type="text" name="flat" placeholder="e.g. Sonatibe" class="box" required>
             </div>
             <div class="inputBox">
                <span>pin code :</span>
                <input type="number" min="0" name="pin_code" placeholder="e.g. 123456" class="box" required>
+            </div>
+            <div class="inputBox">
+               <span>address line 02 :</span>
+               <input type="text" name="street" placeholder="e.g. kk102" class="box" required>
             </div>
          </div>
 
