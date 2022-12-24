@@ -12,7 +12,7 @@ if(!isset($user_id)){
 };
 
 
-$select_products = $conn->prepare("SELECT * FROM `products` WHERE quantity > 0");
+$select_products = $conn->prepare("SELECT * FROM `products` WHERE quantity > 0 AND status='active'");
 $select_products->execute();
 
 
