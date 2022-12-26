@@ -122,36 +122,48 @@ if(isset($_GET['delete'])){
 
    <h1 class="title">products added</h1>
 
-   <div class="box-container">
+   <table class="table">
+         <thead>
+            <tr>
+               <th>image</th>
+               <th>product_name</th>
+               <th>category</th>
+               <th>quantity</th>
+               <th>details</th>
+               <th>price</th>
+               <th>option</th>
+            </tr>
+         </thead>
+         <?php
+            $show_products = $conn->prepare("SELECT * FROM `products` WHERE farmer_id = $farmer_id");
+            $show_products->execute();
+            if($show_products->rowCount() > 0){
+            while($fetch_products = $show_products->fetch(PDO::FETCH_ASSOC)){  
+         ?>
 
-   <?php
-      $show_products = $conn->prepare("SELECT * FROM `products` WHERE farmer_id = $farmer_id");
-      $show_products->execute();
-      if($show_products->rowCount() > 0){
-         while($fetch_products = $show_products->fetch(PDO::FETCH_ASSOC)){  
-   ?>
-   <div class="box">
-      <div class="flex-btn">
-      <div class="price">Rwf<?= $fetch_products['price']; ?></div>
-      <div class="qty">Qty: <?= $fetch_products['quantity']; ?></div>
-      </div>
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-      <div class="name"><?= $fetch_products['name']; ?></div>
-      <div class="cat"><?= $fetch_products['category']; ?></div>
-      <div class="details"><?= $fetch_products['details']; ?></div>
-      <div class="flex-btn">
-         <a href="farmer_update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
-         <a href="farmer_product.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
-      </div>
-   </div>
+               <tbody>
+                  <tr>
+                     <td data-label="image"> <img src="uploaded_img/<?= $fetch_products['image']; ?>" style="width: 100px;height: 70px;" alt=""></span> </td>
+                     <td data-label="product_name"><span><?= $fetch_products['name']; ?></span></td>
+                     <td data-label="category"><span><?= $fetch_products['category']; ?></span></td>
+                     <td data-label="quantity"><span><?= $fetch_products['quantity']; ?></span></td>
+                     <td data-label="details"><span><?= $fetch_products['details']; ?></span></td>
+                     <td data-label="price"><span><?= $fetch_products['price']; ?></span></td>
+                     <td data-label="Option" class="box">
+                           <div class="flex-btn">
+                           <a href="farmer_update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
+                           <a href="farmer_product.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+                           </div>
+                     </td>
+                  </tr>
+               </tbody>
    <?php
       }
    }else{
       echo '<p class="empty">now products added yet!</p>';
    }
    ?>
-
-   </div>
+   </table>
 
 </section>
 

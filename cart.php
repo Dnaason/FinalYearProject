@@ -77,7 +77,7 @@ if(isset($_POST['update_qty'])){
          <input type="number" min="1" value="<?= $fetch_cart['quantity']; ?>" class="qty" name="p_qty">
          <input type="submit" value="update" name="update_qty" class="option-btn">
       </div>
-      <div class="sub-total"> sub total : <span>$<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></span> </div>
+      <div class="sub-total"> sub total : <span>Rwf <?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></span> </div>
    </form>
    <?php
       $grand_total += $sub_total;

@@ -48,7 +48,6 @@ if(!isset($farmer_id)){
       ?>
       <h3>Rwf <?= $total_pendings; ?></h3>
       <p>total pendings</p>
-      <a href="#" class="btn">see orders</a>
       </div>
 
       <div class="box">
@@ -62,7 +61,6 @@ if(!isset($farmer_id)){
       ?>
       <h3>Rwf <?= $total_completed; ?></h3>
       <p>completed orders</p>
-      <a href="#" class="btn">see orders</a>
       </div>
 
       <div class="box">
@@ -73,7 +71,6 @@ if(!isset($farmer_id)){
       ?>
       <h3><?= $number_of_orders; ?></h3>
       <p>orders placed</p>
-      <a href="#" class="btn">see orders</a>
       </div>
 
       <div class="box">
@@ -84,7 +81,6 @@ if(!isset($farmer_id)){
       ?>
       <h3><?= $number_of_products; ?></h3>
       <p>products added</p>
-      <a href="farmer_product.php" class="btn">see products</a>
       </div>
 
    </div>
