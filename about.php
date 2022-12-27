@@ -38,14 +38,14 @@ if(!isset($user_id)){
       <div class="box">
          <img src="images/about-img-1.png" alt="">
          <h3>why choose us?</h3>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, a quod, quis alias eius dignissimos pariatur laborum dolorem ad ullam iure, consequatur autem animi illo odit! Atque quia minima voluptatibus.</p>
+         <p>you can choose us inorder to get a good and quality services to you, we connect you with a different markets as a farmer, and we deliver you a good products that you will be happy to have us, reach on us then you get a good services, our system will deliver you a good services, we are happy to be with you.</p>
          <a href="contact.php" class="btn">contact us</a>
       </div>
 
       <div class="box">
          <img src="images/about-img-2.png" alt="">
          <h3>what we provide?</h3>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, a quod, quis alias eius dignissimos pariatur laborum dolorem ad ullam iure, consequatur autem animi illo odit! Atque quia minima voluptatibus.</p>
+         <p>we provide to you a good and quality services to you, we connect you with a different markets as a farmer, and we deliver you a good products that you will be happy to have us, reach on us then you get a good services, our system will deliver you a good services, we are happy to be with you.</p>
          <a href="shop.php" class="btn">our shop</a>
       </div>
 
@@ -55,13 +55,13 @@ if(!isset($user_id)){
 
 <section class="reviews">
 
-   <h1 class="title">clients reivews</h1>
+   <h1 class="title">clients statements</h1>
 
    <div class="box-container">
 
       <div class="box">
          <img src="images/pic-1.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>They have a good services deliver wonderfull services. we are happy to be with you, we are always get your services.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -74,7 +74,7 @@ if(!isset($user_id)){
 
       <div class="box">
          <img src="images/pic-2.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>They have a good services deliver wonderfull services. we are happy to be with you, we are always get your services.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -87,7 +87,7 @@ if(!isset($user_id)){
 
       <div class="box">
          <img src="images/pic-3.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>Farming web assistance are able to provide to us a good services to us, they connect you with a different markets as a farmer, and they deliver you a good products that you will be happy to have them, we are happy to be with you.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -100,7 +100,7 @@ if(!isset($user_id)){
 
       <div class="box">
          <img src="images/pic-4.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>They have a good services deliver wonderfull services. we are happy to be with you, we are always get your services.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -113,7 +113,7 @@ if(!isset($user_id)){
 
       <div class="box">
          <img src="images/pic-5.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>They have a good services deliver wonderfull services. we are happy to be with you, we are always get your services.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -126,7 +126,7 @@ if(!isset($user_id)){
 
       <div class="box">
          <img src="images/pic-6.png" alt="">
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et voluptates sit earum, neque non cupiditate amet deserunt aperiam quas ex.</p>
+         <p>They have a good services deliver wonderfull services. we are happy to be with you, we are always get your services.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>

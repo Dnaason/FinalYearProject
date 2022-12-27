@@ -95,7 +95,7 @@ if(isset($message)){
       <input type="text" name="name" class="box" placeholder="enter your name" required>
       <input type="email" name="email" class="box" placeholder="enter your email" required>
       <input type="number" name="number" class="box" placeholder="enter your number" required>
-      <input type="text" name="state" class="box" placeholder="enter your state" required>
+      <input type="text" name="province" class="box" placeholder="enter your province" required>
       <input type="text" name="district" class="box" placeholder="enter your district" required>
       <input type="text" name="sector" class="box" placeholder="enter your sector" required>
       <input type="password" name="pass" class="box" placeholder="enter your password" required>

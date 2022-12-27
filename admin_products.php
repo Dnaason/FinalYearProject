@@ -17,7 +17,7 @@ if(isset($_POST['update_products'])){
    $update_status = filter_var($update_status, FILTER_SANITIZE_STRING);
    $update_products = $conn->prepare("UPDATE `products` SET status = ? WHERE id = ?");
    $update_products->execute([$update_status, $pid]);
-   $message[] = 'payment has been updated!';
+   $message[] = 'status has been updated!';
 
 };
 
