@@ -1,6 +1,7 @@
 <?php
 
 @include 'config.php';
+define("ROW_PER_PAGE",3);
 
 session_start();
 
@@ -45,7 +46,20 @@ if(isset($_GET['delete'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/admin_style.css">
+   <style>
+      .pagination{
+   display: flex;
+   justify-content: center;
+   padding: 10px;
+   gap: 1px;
 
+}
+.pagination a{
+   padding: 8px;
+   font-size: 15px;
+   border: 0.5px solid #ddd;
+}
+   </style>
 </head>
 <body>
    
@@ -69,12 +83,30 @@ if(isset($_GET['delete'])){
      	 <th>Option</th>
      	</tr>
      </thead>
-      <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders` ORDER BY `placed_on` DESC");
+     <?php
+
+
+$page = 1;
+$start=0;
+if(!empty($_GET["page"])) {
+   $page = $_GET["page"];
+   $start=($page-1) * ROW_PER_PAGE;
+}
+$limit=" limit " . $start . "," . ROW_PER_PAGE;
+
+$query0="SELECT * FROM `orders` ORDER BY `placed_on` DESC";
+$select_orders0 = $conn->prepare($query0);
+$select_orders0->execute();
+$results = $select_orders0->rowCount();
+
+$query="SELECT * FROM `orders` ORDER BY `placed_on` DESC ".$limit;
+
+         $select_orders = $conn->prepare($query);
          $select_orders->execute();
          if($select_orders->rowCount() > 0){
-            while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
+            while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){ 
       ?>
+      
       
       <tbody>
      	  <tr>
@@ -111,6 +143,17 @@ if(isset($_GET['delete'])){
       }
       ?>
    </table>
+   <div class="pagination">
+
+<?php 
+
+
+for($i=1; $i <= ceil(($results/ROW_PER_PAGE)) ; $i++):  ?>
+<a href="?page=<?php echo$i;  ?>"> <?php echo $i;  ?></a>
+<?php
+endfor;
+?>
+</div>
 </section>
 
 
