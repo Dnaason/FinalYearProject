@@ -20,9 +20,9 @@ if(isset($message)){
       <a href="farmer_page.php" class="logo">Farmer<span>Panel</span></a>
 
       <nav class="navbar">
-         <a href="farmer_page.php">home</a>
-         <a href="farmer_product.php">products</a>
-         <a href="farmer_contact.php">contact</a>
+         <a href="farmer_page.php">Home</a>
+         <a href="farmer_product.php">Products</a>
+         <a href="farmer_contact.php">Contact</a>
       </nav>
 
       <div class="icons">
