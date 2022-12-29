@@ -1,6 +1,7 @@
 <?php
 
 @include 'config.php';
+define("ROW_PER_PAGE",5);
 
 session_start();
 
@@ -23,8 +24,25 @@ if(!isset($user_id)){
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
+ 
+
+
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+      .pagination{
+   display: flex;
+   justify-content: center;
+   padding: 10px;
+   gap: 1px;
+
+}
+.pagination a{
+   padding: 8px;
+   font-size: 15px;
+   border: 0.5px solid #ddd;
+}
+   </style>
 
 </head>
 <body>
@@ -34,7 +52,7 @@ if(!isset($user_id)){
 <section class="placed-orders">
 
    <h1 class="title">placed orders</h1>
-   <table class="table">
+   <table id="webfa" class="table">
       <thead>
          <tr>
          <th>placed_on</th>
@@ -50,7 +68,24 @@ if(!isset($user_id)){
       </thead>
 
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE user_id = ? ORDER BY `placed_on` DESC");
+
+
+$page = 1;
+$start=0;
+if(!empty($_GET["page"])) {
+   $page = $_GET["page"];
+   $start=($page-1) * ROW_PER_PAGE;
+}
+$limit=" limit " . $start . "," . ROW_PER_PAGE;
+
+$query0="SELECT * FROM `orders` WHERE user_id = ? ORDER BY `placed_on` DESC";
+$select_orders0 = $conn->prepare($query0);
+$select_orders0->execute([$user_id]);
+$results = $select_orders0->rowCount();
+
+$query="SELECT * FROM `orders` WHERE user_id = ? ORDER BY `placed_on` DESC ".$limit;
+
+         $select_orders = $conn->prepare($query);
          $select_orders->execute([$user_id]);
          if($select_orders->rowCount() > 0){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){ 
@@ -77,6 +112,18 @@ if(!isset($user_id)){
 
    </table>
 
+   <div class="pagination">
+
+   <?php 
+
+
+for($i=1; $i <= ceil(($results/ROW_PER_PAGE)) ; $i++):  ?>
+   <a href="?page=<?php echo$i;  ?>"> <?php echo $i;  ?></a>
+<?php
+endfor;
+?>
+   </div>
+
 </section>
 
 
@@ -88,8 +135,8 @@ if(!isset($user_id)){
 
 
 <?php include 'footer.php'; ?>
-
 <script src="js/script.js"></script>
+
 
 </body>
 </html>
