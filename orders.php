@@ -99,7 +99,7 @@ $query="SELECT * FROM `orders` WHERE user_id = ? ORDER BY `placed_on` DESC ".$li
             <td data-label="address"><span><?= $fetch_orders['address']; ?></span></td>
             <td data-label="placed_on"><span><?= $fetch_orders['method']; ?></span></td>
             <td data-label="placed_on"><span><?= $fetch_orders['total_products']; ?></span></td>
-            <td data-label="placed_on"><span>$<?= $fetch_orders['total_price']; ?>/-</span></td>
+            <td data-label="placed_on"><span>Rwf<?= $fetch_orders['total_price']; ?>/-</span></td>
             <td data-label="placed_on"><span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span></td>
          </tr>
       </tbody>
